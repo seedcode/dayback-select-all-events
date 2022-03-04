@@ -5,7 +5,7 @@
 // https://dayback.com/reschedule-multiple-events-at-once/
 //
 // Action Type: Before Calendar Rendered
-// Prevent Default Action: Yes
+// Prevent Default Action: No
 // 
 // More info on custom actions here:
 // https://docs.dayback.com/article/140-custom-app-actions
@@ -58,8 +58,6 @@ function run() {
     removeEventListener('keydown', selectAll);
     addEventListener('keydown', selectAll);
 
-    return confirmCallback();
-
     function selectAll(e) {  
         
         // modifier and key are pressed
@@ -67,7 +65,7 @@ function run() {
 
             // Skip input elements and input textareas if in focus
             if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') {
-                return confirmCallback();   
+                return;   
             }
 
             // Determine if the event is not filtered out of view and reset multi-select state
